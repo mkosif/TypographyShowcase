@@ -71,7 +71,7 @@ entry/src/main/ets/
 
 The renderers assume the round wearable safe area and an AMOLED black background. Font weight variations are most visible when the system default typeface is a variable font; on a non-variable fallback the weight ramp still renders but axis-driven differences may be minimal.
 
-# License (MIT)
+# License
 
 **How To Build Typography Showcase** is distributed under the terms of the MIT License.
 See the [LICENSE](/LICENSE) for more information.

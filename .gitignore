@@ -1,3 +1,4 @@
+############################
 # HarmonyOS / ArkTS & JS (Lite) Project
 ############################
 
@@ -42,7 +43,7 @@ preview/
 # Lock / config files treated as forbidden by scanner
 oh-package-lock.json5
 **/oh-package-lock.json5
-code-linter.json5
+shell/config/code-linter.json5
 **/code-linter.json5
 
 ############################
@@ -82,15 +83,13 @@ dist/
 out/
 
 ############################
-# JetBrains extra metadata
+# extra metadata
 ############################
 *.iml
 
-# Ana dizindeki detail ve shell klasorlerini haric tut
-/details/
+/detail/
 /shell/
 
-# Tum Excel dosyalarini haric tut
 *.xls
 *.xlsx
 *.xlsm
@@ -104,3 +103,6 @@ out/
 *.p12
 *.cer
 *.p7b
+
+rule_config.csv
+**/rule_config.csv
