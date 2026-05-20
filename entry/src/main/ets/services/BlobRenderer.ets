@@ -1,6 +1,6 @@
 import { common2D, drawing } from '@kit.ArkGraphics2D';
-import * as config from '../constants/SpecimenConfig';
-import * as utils from './RendererUtils';
+import { COLOR_DIM_ARGB, COLOR_INK_ARGB } from '../constants/SpecimenConfig';
+import { defaultTypeface, drawCenteredBlob, fillBackground, makeBrush } from './RendererUtils';
 
 const POS_TEXT: string = 'TYPE';
 const REUSE_TEXT: string = 'Reuse';
@@ -60,7 +60,7 @@ function drawPositionedGlyphs(
     points,
     font
   );
-  const inkBrush: drawing.Brush = utils.makeBrush(config.COLOR_INK_ARGB);
+  const inkBrush: drawing.Brush = makeBrush(COLOR_INK_ARGB);
   canvas.attachBrush(inkBrush);
   canvas.drawTextBlob(posBlob, 0, 0);
   canvas.detachBrush();
@@ -73,20 +73,20 @@ function drawCaption(
   baselineY: number
 ): void {
   const labelFont: drawing.Font = new drawing.Font();
-  labelFont.setTypeface(utils.defaultTypeface());
+  labelFont.setTypeface(defaultTypeface());
   labelFont.setSize(LEGEND_FONT_PX);
   const blob: drawing.TextBlob = drawing.TextBlob.makeFromString(
     text,
     labelFont,
     drawing.TextEncoding.TEXT_ENCODING_UTF8
   );
-  utils.drawCenteredBlob(canvas, blob, utils.makeBrush(config.COLOR_DIM_ARGB), centerX, baselineY);
+  drawCenteredBlob(canvas, blob, makeBrush(COLOR_DIM_ARGB), centerX, baselineY);
 }
 
 export function renderBlob(canvas: drawing.Canvas, widthPx: number, heightPx: number): void {
-  utils.fillBackground(canvas, widthPx, heightPx);
+  fillBackground(canvas, widthPx, heightPx);
 
-  const typeface: drawing.Typeface = utils.defaultTypeface();
+  const typeface: drawing.Typeface = defaultTypeface();
   const centerX: number = widthPx / 2;
 
   const reuseFont: drawing.Font = new drawing.Font();

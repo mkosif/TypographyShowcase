@@ -1,6 +1,6 @@
 import { drawing } from '@kit.ArkGraphics2D';
-import * as config from '../constants/SpecimenConfig';
-import * as utils from './RendererUtils';
+import { COLOR_DIM_ARGB, COLOR_INK_ARGB, SAMPLE_WORD } from '../constants/SpecimenConfig';
+import { defaultTypeface, drawCenteredBlob, fillBackground, makeBrush } from './RendererUtils';
 
 const SIZE_RAMP_PX: number[] = [18, 28, 42, 58];
 const LABEL_SIZE_PX: number = 14;
@@ -47,11 +47,11 @@ function buildLayout(typeface: drawing.Typeface, sizePx: number): SampleLayout {
 }
 
 export function renderSize(canvas: drawing.Canvas, widthPx: number, heightPx: number): void {
-  utils.fillBackground(canvas, widthPx, heightPx);
+  fillBackground(canvas, widthPx, heightPx);
 
-  const typeface: drawing.Typeface = utils.defaultTypeface();
-  const inkBrush: drawing.Brush = utils.makeBrush(config.COLOR_INK_ARGB);
-  const dimBrush: drawing.Brush = utils.makeBrush(config.COLOR_DIM_ARGB);
+  const typeface: drawing.Typeface = defaultTypeface();
+  const inkBrush: drawing.Brush = makeBrush(COLOR_INK_ARGB);
+  const dimBrush: drawing.Brush = makeBrush(COLOR_DIM_ARGB);
 
   const layouts: SampleLayout[] = [];
   let totalHeight: number = 0;
@@ -71,11 +71,11 @@ export function renderSize(canvas: drawing.Canvas, widthPx: number, heightPx: nu
 
     const sampleBaseline: number = rowTop + layout.sampleAscent;
     const sampleBlob: drawing.TextBlob = drawing.TextBlob.makeFromString(
-      config.SAMPLE_WORD,
+      SAMPLE_WORD,
       layout.sampleFont,
       drawing.TextEncoding.TEXT_ENCODING_UTF8
     );
-    utils.drawCenteredBlob(canvas, sampleBlob, inkBrush, centerX, sampleBaseline);
+    drawCenteredBlob(canvas, sampleBlob, inkBrush, centerX, sampleBaseline);
 
     const labelBaseline: number = sampleBaseline + layout.sampleDescent
       + LABEL_GAP_PX + layout.labelAscent;
@@ -84,7 +84,7 @@ export function renderSize(canvas: drawing.Canvas, widthPx: number, heightPx: nu
       layout.labelFont,
       drawing.TextEncoding.TEXT_ENCODING_UTF8
     );
-    utils.drawCenteredBlob(canvas, labelBlob, dimBrush, centerX, labelBaseline);
+    drawCenteredBlob(canvas, labelBlob, dimBrush, centerX, labelBaseline);
 
     rowTop += layout.rowHeight + ROW_GAP_PX;
   }
