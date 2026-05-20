@@ -1,10 +1,8 @@
-# Typography Showcase
+# How To Build Typography Showcase
 
-> **Note:** To access all shared projects, get information about environment setup, and view other guides, please visit [Explore-In-HMOS-Wearable Index](https://github.com/Explore-In-HMOS-Wearable/hmos-index).
+**How To Build Typography Showcase** is a HarmonyOS wearable codelab that renders the same word across font sizes, weights, positioned glyph blobs, and a laid-out paragraph using the low-level ArkGraphics2D text APIs.
 
-A wearable type specimen viewer that renders the same word across font sizes, weights, positioned glyph blobs, and a laid-out paragraph using the low-level ArkGraphics2D text APIs.
-
-This `how-to-build-typography-showcase-on-watch` codelab demonstrates how `drawing.Font`, `drawing.TextBlob`, `drawing.Typeface`, `drawing.TypefaceArguments`, and the `text` module compose into a circular-display readability tool.
+It demonstrates how `drawing.Font`, `drawing.TextBlob`, `drawing.Typeface`, `drawing.TypefaceArguments`, and the `text` module compose into a circular-display readability tool.
 
 # Preview
 
@@ -24,7 +22,7 @@ This `how-to-build-typography-showcase-on-watch` codelab demonstrates how `drawi
 
 # Technology
 
-## Stack
+## Stack (Languages, Frameworks, Tools, Libraries, *3rd Party)
 
 - **Languages**: ArkTS, ArkUI
 - **Frameworks**: HarmonyOS SDK 6.0.1 (API 21)
@@ -69,12 +67,11 @@ entry/src/main/ets/
 ## Supported Devices
 
 - Huawei Watch 5
-- DevEco Studio Simulator (wearable profile)
+- DevEco Studio Simulator
 
 The renderers assume the round wearable safe area and an AMOLED black background. Font weight variations are most visible when the system default typeface is a variable font; on a non-variable fallback the weight ramp still renders but axis-driven differences may be minimal.
 
-# License
+# License (MIT)
 
-**Typography Showcase** is distributed under the terms of the MIT License.
-
+**How To Build Typography Showcase** is distributed under the terms of the MIT License.
 See the [LICENSE](/LICENSE) for more information.
