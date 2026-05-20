@@ -23,9 +23,9 @@ interface EchoStop {
 }
 
 const ECHO_STOPS: EchoStop[] = [
-  { offsetX: -22, alpha: 0x40 },
-  { offsetX: -10, alpha: 0x90 },
-  { offsetX: 0, alpha: 0xFF }
+  { offsetX: -86, alpha: 0x40 },
+  { offsetX: 0, alpha: 0xFF },
+  { offsetX: 86, alpha: 0x90 }
 ];
 
 function buildPositions(centerX: number, centerY: number): common2D.Point[] {
