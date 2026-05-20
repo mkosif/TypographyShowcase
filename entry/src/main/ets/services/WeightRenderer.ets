@@ -1,16 +1,6 @@
 import { drawing, text } from '@kit.ArkGraphics2D';
-import {
-  COLOR_ACCENT_ARGB,
-  COLOR_DIM_ARGB,
-  COLOR_INK_ARGB
-} from '../constants/SpecimenConfig';
-import {
-  colorOf,
-  defaultTypeface,
-  drawCenteredBlob,
-  fillBackground,
-  makeBrush
-} from './RendererUtils';
+import * as config from '../constants/SpecimenConfig';
+import * as utils from './RendererUtils';
 
 interface WeightVariant {
   weight: text.FontWeight;
@@ -36,7 +26,7 @@ function buildVariantParagraph(layoutWidth: number): text.Paragraph {
     const style: text.TextStyle = {
       fontWeight: variant.weight,
       fontSize: 30,
-      color: colorOf(COLOR_INK_ARGB)
+      color: utils.colorOf(config.COLOR_INK_ARGB)
     };
     builder.pushStyle(style);
     builder.addText(variant.label);
@@ -48,7 +38,7 @@ function buildVariantParagraph(layoutWidth: number): text.Paragraph {
 }
 
 function describeAxisFootprint(): string {
-  const base: drawing.Typeface = defaultTypeface();
+  const base: drawing.Typeface = utils.defaultTypeface();
   let registered: number = 0;
   try {
     for (const variant of VARIANTS) {
@@ -70,18 +60,18 @@ function drawFooter(
   message: string
 ): void {
   const footFont: drawing.Font = new drawing.Font();
-  footFont.setTypeface(defaultTypeface());
+  footFont.setTypeface(utils.defaultTypeface());
   footFont.setSize(13);
   const blob: drawing.TextBlob = drawing.TextBlob.makeFromString(
     message,
     footFont,
     drawing.TextEncoding.TEXT_ENCODING_UTF8
   );
-  drawCenteredBlob(canvas, blob, makeBrush(COLOR_DIM_ARGB), widthPx / 2, heightPx - 56);
+  utils.drawCenteredBlob(canvas, blob, utils.makeBrush(config.COLOR_DIM_ARGB), widthPx / 2, heightPx - 56);
 }
 
 export function renderWeight(canvas: drawing.Canvas, widthPx: number, heightPx: number): void {
-  fillBackground(canvas, widthPx, heightPx);
+  utils.fillBackground(canvas, widthPx, heightPx);
 
   const layoutWidth: number = widthPx * 0.72;
   const paragraph: text.Paragraph = buildVariantParagraph(layoutWidth);
@@ -90,7 +80,7 @@ export function renderWeight(canvas: drawing.Canvas, widthPx: number, heightPx: 
   const y: number = (heightPx - paragraph.getHeight()) / 2 - 8;
   paragraph.paint(canvas, x, y);
 
-  const accentRule: drawing.Brush = makeBrush(COLOR_ACCENT_ARGB);
+  const accentRule: drawing.Brush = utils.makeBrush(config.COLOR_ACCENT_ARGB);
   canvas.attachBrush(accentRule);
   const ruleY: number = y + paragraph.getHeight() + 4;
   canvas.drawRect({
