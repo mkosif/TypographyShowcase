@@ -20,9 +20,7 @@ It demonstrates how `drawing.Font`, `drawing.TextBlob`, `drawing.Typeface`, `dra
 - **Reuse positioned glyphs:** Build an immutable `drawing.TextBlob` once and redraw it for cheap repeated rendering, including custom per-glyph positions via `makeFromPosText`.
 - **Lay out wrapped copy:** Compose a multi-style paragraph with the `text` module to test how long copy wraps inside the circular safe area.
 
-# Technology
-
-## Stack (Languages, Frameworks, Tools, Libraries, *3rd Party)
+# Tech Stack
 
 - **Languages**: ArkTS, ArkUI
 - **Frameworks**: HarmonyOS SDK 6.0.1 (API 21)
