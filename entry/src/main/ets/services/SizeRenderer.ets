@@ -32,8 +32,8 @@ function buildLayout(typeface: drawing.Typeface, sizePx: number): SampleLayout {
   const sampleDescent: number = sampleMetrics.descent;
   const labelAscent: number = -labelMetrics.ascent;
   const labelDescent: number = labelMetrics.descent;
-  const rowHeight: number = sampleAscent + sampleDescent + LABEL_GAP_PX
-    + labelAscent + labelDescent;
+  const rowHeight: number = sampleAscent + sampleDescent + LABEL_GAP_PX +
+    labelAscent + labelDescent;
 
   return {
     sampleFont,
@@ -77,8 +77,8 @@ export function renderSize(canvas: drawing.Canvas, widthPx: number, heightPx: nu
     );
     drawCenteredBlob(canvas, sampleBlob, inkBrush, centerX, sampleBaseline);
 
-    const labelBaseline: number = sampleBaseline + layout.sampleDescent
-      + LABEL_GAP_PX + layout.labelAscent;
+    const labelBaseline: number = sampleBaseline + layout.sampleDescent +
+      LABEL_GAP_PX + layout.labelAscent;
     const labelBlob: drawing.TextBlob = drawing.TextBlob.makeFromString(
       `${sizePx}px`,
       layout.labelFont,
